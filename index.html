@@ -3,13 +3,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#6ab04c">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="/assets/manifest-DRm1jwVQ.json">
-    <title>كفاءة بلس | منصة الصيانة المنزلية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كفاءة بلس - للصيانة والتشطيب</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
@@ -19,10 +14,10 @@
           extend: {
             colors: {
               kafaa: {
-                green: '#6ab04c',
-                orange: '#f0932b',
-                dark: '#2f3640',
-                light: '#f4f7f6'
+                green: 'var(--kafaa-green)',
+                orange: 'var(--kafaa-orange)',
+                dark: 'var(--kafaa-dark)',
+                light: 'var(--bg-main)'
               }
             }
           }
@@ -37,59 +32,69 @@
             --kafaa-dark: #2f3640;
             --kafaa-gradient: linear-gradient(135deg, #6ab04c 0%, #4e8d35 100%);
             --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #2f3640;
+            --text-muted: #94a3b8;
         }
 
         .dark {
-            --bg-main: #0f172a;
-            --kafaa-dark: #f1f5f9;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --bg-main: #1a1a1a;
+            --kafaa-dark: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
         }
 
         body { 
           font-family: 'Cairo', sans-serif;
           background-color: var(--bg-main);
-          color: var(--kafaa-dark);
-          -webkit-tap-highlight-color: transparent;
-          user-select: none;
-          overscroll-behavior-y: contain;
           overflow-x: hidden;
-          margin: 0;
-          padding: 0;
-        }
-
-        /* تحسين استجابة اللمس */
-        button, a {
-          cursor: pointer;
-          touch-action: manipulation;
+          color: var(--text-main);
+          transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .soft-card {
           background: var(--card-bg);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(10px);
           border: 1px solid rgba(106, 176, 76, 0.1);
-          border-radius: 2rem;
+          border-radius: 1.5rem;
+          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
-        .kafaa-gradient { background: var(--kafaa-gradient); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .dark .soft-card {
+          border-color: rgba(255, 255, 255, 0.05);
+          box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.4);
+        }
+
+        .kafaa-gradient {
+            background: var(--kafaa-gradient);
+        }
         
-        #root {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
+        .dark .bg-white {
+          background-color: #1e293b !important;
+        }
+        
+        .dark .text-kafaa-dark {
+          color: #f1f5f9 !important;
         }
 
-        /* انيميشن البرق للتأكيد */
+        .dark .bg-slate-50 {
+          background-color: #0f172a !important;
+        }
+
         .lightning-gradient {
-          background: linear-gradient(90deg, #f0932b, #ffbe76, #f0932b);
-          background-size: 200% 100%;
-          animation: lightning 2s linear infinite;
+            background: linear-gradient(135deg, var(--kafaa-orange) 0%, #d35400 100%);
         }
-        @keyframes lightning {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
         }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--kafaa-green); border-radius: 10px; }
     </style>
 
 <link rel="stylesheet" href="/index.css">
@@ -104,7 +109,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-DyRxObFV.js"></script>
+  <script type="module" crossorigin src="/assets/index-Bds2fglV.js"></script>
 </head>
 <body>
     <div id="root"></div>
